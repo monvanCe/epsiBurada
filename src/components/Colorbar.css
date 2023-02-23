@@ -1,0 +1,35 @@
+.colorbar {
+  display: flex;
+  height: 8px;
+  width: 100%;
+}
+
+.colorbar_item-1 {
+  background-color: #7622da;
+  flex-grow: 11;
+}
+
+.colorbar_item-2 {
+  background-color: #47c6eb;
+  flex-grow: 18;
+}
+
+.colorbar_item-3 {
+  background-color: #ed5f1f;
+  flex-grow: 31;
+}
+
+.colorbar_item-4 {
+  background-color: #f59f28;
+  flex-grow: 15;
+}
+
+.colorbar_item-5 {
+  background-color: #6b1e5b;
+  flex-grow: 13;
+}
+
+.colorbar_item-6 {
+  background-color: #45b794;
+  flex-grow: 12;
+}
