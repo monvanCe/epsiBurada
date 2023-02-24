@@ -8,12 +8,18 @@
 
 .carouselBody {
   height: 200px;
-  width: 750px;
+  width: 767px;
   background: linear-gradient(to right, red, green, blue);
 }
 
 .carouselFooter {
   height: 100px;
-  width: 750px;
+  width: 767px;
   background-color: brown;
+}
+
+@media (max-width: 767px) {
+  .carouselContainer {
+    margin-top: 2%;
+  }
 }
