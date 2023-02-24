@@ -1,8 +1,10 @@
 import React from "react";
 import "./Home.css";
 
-import Colorbar from "../components/Colorbar";
-import MobileSearch from "../components/MobileSearch";
+import Colorbar from "../components/Colorbar/Colorbar";
+import MobileSearch from "../components/MobileSearch/MobileSearch";
+import Carousel from "../components/Carousel/Carousel";
+import Bottombar from "../components/Bottombar/Bottombar";
 
 function App() {
   return (
@@ -14,35 +16,19 @@ function App() {
         <div className="favorites"></div>
       </div>
 
-      <Colorbar paddingtop="1.5%" />
+      <Colorbar paddingTop="1.5%" />
 
       <MobileSearch />
 
       <div className="categories"></div>
 
-      <div className="carousel"></div>
+      <Carousel />
 
       <div className="lists"></div>
 
-      <div className="eop"></div>
+      <Bottombar />
 
-      <div className="tabbar">
-        <img
-          className="homebar"
-          src={require("../assets/home.png")}
-          alt="homebar"
-        />
-        <img
-          className="categoriesbar"
-          src={require("../assets/categories.png")}
-          alt="homebar"
-        />
-        <img
-          className="favoritesbar"
-          src={require("../assets/favorites.png")}
-          alt="homebar"
-        />
-      </div>
+      <div className="eop"></div>
     </div>
   );
 }

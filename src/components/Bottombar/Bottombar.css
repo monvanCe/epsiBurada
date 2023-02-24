@@ -1,0 +1,20 @@
+.bottombar {
+  position: fixed;
+  height: 60px;
+  width: 100vw;
+  bottom: 0px;
+  background-color: white;
+  justify-content: space-evenly;
+  display: none;
+}
+
+.bottombar > img {
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .bottombar {
+    display: flex;
+  }
+}

@@ -1,8 +1,10 @@
 import "./Colorbar.css";
 
-const colorbar = ({ paddingtop }) => {
+const colorbar = (props) => {
+  const paddingTop = props.paddingTop;
+
   return (
-    <div className="colorbar" style={{ paddingTop: paddingtop }}>
+    <div className="colorbar" style={{ paddingTop: paddingTop }}>
       <div className="colorbar_item-1"></div>
       <div className="colorbar_item-2"></div>
       <div className="colorbar_item-3"></div>

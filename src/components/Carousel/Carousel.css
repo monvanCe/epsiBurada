@@ -1,0 +1,19 @@
+.carouselContainer {
+  height: 300px;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.carouselBody {
+  height: 200px;
+  width: 750px;
+  background: linear-gradient(to right, red, green, blue);
+}
+
+.carouselFooter {
+  height: 100px;
+  width: 750px;
+  background-color: brown;
+}

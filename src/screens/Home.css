@@ -55,31 +55,7 @@ img {
   background-color: #404040;
 }
 
-.tabbar {
-  position: fixed;
-  height: 60px;
-  width: 100vw;
-  bottom: 0px;
-  background-color: white;
-  display: none;
-}
-
-.tabbar > img {
-  margin: 10px;
-  margin-bottom: 20px;
-}
-
-.mobilesearch {
-  display: none !important;
-}
 @media (max-width: 767px) {
-  .mobilesearch {
-    display: flex !important;
-  }
-
-  .colorbar {
-    display: none !important;
-  }
   .categories {
     display: none;
   }
@@ -101,9 +77,5 @@ img {
     margin-right: 7.5%;
     margin-left: 7.5%;
     justify-content: space-between;
-  }
-  .tabbar {
-    display: flex;
-    justify-content: space-evenly;
   }
 }

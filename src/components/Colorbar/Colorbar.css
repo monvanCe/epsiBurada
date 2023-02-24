@@ -33,3 +33,9 @@
   background-color: #45b794;
   flex-grow: 12;
 }
+
+@media (max-width: 767px) {
+  .colorbar {
+    display: none;
+  }
+}
