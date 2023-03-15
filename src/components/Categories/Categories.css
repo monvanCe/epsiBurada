@@ -1,0 +1,39 @@
+.categories-conteiner {
+  width: 100vw;
+  height: 60px;
+  background-color: #00000009;
+  box-shadow: 0px 10px black;
+}
+
+.categories {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1088px;
+  margin: auto;
+}
+
+.category-conteiner {
+  display: flex;
+}
+
+.category {
+  color: #646464;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hr {
+  justify-self: center;
+  align-items: center;
+  width: 1px;
+  height: 35px;
+  background-color: rgb(190, 190, 190);
+}
+
+@media (max-width: 767px) {
+  .categories-conteiner {
+    display: none;
+  }
+}

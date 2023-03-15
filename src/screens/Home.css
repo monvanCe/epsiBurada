@@ -5,77 +5,13 @@ body {
 
 body::-webkit-scrollbar {
   width: 0px;
-  background: transparent;
 }
-img {
-  display: block;
-}
+
 .container {
   position: absolute;
   width: 100vw;
   left: 0;
   top: 0;
-  padding-top: 3%;
+  padding-top: 5px;
   height: 100%;
-}
-
-.header {
-  background-color: #404040;
-  display: flex;
-  justify-content: center;
-  height: 55px;
-}
-
-.logo {
-  width: 275px;
-  background-color: #808080;
-  margin-right: 75px;
-}
-
-.desktopsearch {
-  width: 450px;
-  background-color: #808080;
-  margin-right: 50px;
-}
-
-.location {
-  width: 150px;
-  background-color: #808080;
-  margin-right: 50px;
-}
-
-.favorites {
-  width: 150px;
-  background-color: #808080;
-}
-
-.categories {
-  width: 100vw;
-  height: 60px;
-  background-color: #404040;
-}
-
-@media (max-width: 767px) {
-  .categories {
-    display: none;
-  }
-  .desktopsearch {
-    display: none;
-  }
-  .favorites {
-    display: none;
-  }
-  .logo {
-    width: 175px;
-    margin-right: 0px;
-  }
-  .location {
-    margin-right: 0px;
-    width: 175px;
-  }
-  .header {
-    margin-right: 7.5%;
-    margin-left: 7.5%;
-    justify-content: space-between;
-  }
 }
