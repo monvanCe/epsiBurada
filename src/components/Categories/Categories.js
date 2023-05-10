@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from "react";
+
 import "./Categories.css";
+import { fetchCategories } from "../../Datas/Network";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
-
   useEffect(() => {
-    const getCategories = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products/categories"
-      );
-
-      const data = await response.json();
-
-      setCategories(
-        data.map((el) => {
-          return el.charAt(0).toUpperCase() + el.slice(1);
-        })
-      );
-    };
-
-    getCategories();
-  }, []);
+    fetchCategories().then((data) => setCategories(data));
+  });
 
   return (
     <div className="categories-conteiner">

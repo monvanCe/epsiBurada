@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Carousel.css";
+import { fetchProducts } from "../../Datas/Network";
 
 const Carousel = ({ topColor }) => {
-  const [datas] = useState([]);
-  const [list, setlist] = useState([]);
+  const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchProducts().then((data) => setProducts(data));
+  });
+
+  const [list, setList] = useState([]);
   const [banner, setBanner] = useState(0);
   const [visible, setVisible] = useState(false);
 
@@ -34,14 +42,16 @@ const Carousel = ({ topColor }) => {
   }
 
   const updateList = () => {
-    setlist(
-      datas.slice(0, 10).map((el, c) => {
+    setList(
+      products.slice(0, 10).map((el, c) => {
         return (
           <li key={c}>
             <img
               alt="carousel-footer"
               className={`${
-                banner === c ? "carousel-footer-image-bordered" : ""
+                banner === c
+                  ? "footer-image carousel-footer-image-bordered"
+                  : "footer-image"
               }`}
               src={`${el.image}`}
               onClick={() => setBanner(c)}
@@ -53,21 +63,8 @@ const Carousel = ({ topColor }) => {
   };
 
   useEffect(() => {
-    const fetchimages = async () => {
-      const response = await fetch("https://fakestoreapi.com/products/");
-      const data = await response.json();
-
-      datas.push(...data);
-
-      updateList();
-    };
-
-    fetchimages();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
     updateList();
-  }, [banner]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [banner, products]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
@@ -83,14 +80,21 @@ const Carousel = ({ topColor }) => {
               visible ? "visible" : ""
             }`}
           >
-            {datas[banner] ? datas[banner].category : "loading..."}
+            {products[banner] ? products[banner].category : "loading..."}
           </p>
           <p
             className={`carousel-content-text-bold ${visible ? "visible" : ""}`}
           >
-            {datas[banner] ? datas[banner].title : "loading..."}
+            {products[banner] ? products[banner].title : "loading..."}
           </p>
-          <button className="carousel-content-button">
+          <button
+            className="carousel-content-button"
+            onClick={() => {
+              navigate(
+                `Product?productName=${products[banner].title}&productCategory=${products[banner].category}`
+              );
+            }}
+          >
             <p className="carousel-content-button-text">Sipariş Et</p>
           </button>
         </div>
@@ -100,10 +104,9 @@ const Carousel = ({ topColor }) => {
             className={`carousel-content-text-image ${
               visible ? "visible" : ""
             }`}
-            src={datas[banner] ? datas[banner].image : "loading..."}
+            src={products[banner] ? products[banner].image : "loading..."}
           />
         </div>
-        <p className="carousel-counter">{banner + 1} / 10 </p>
       </div>
 
       <div className="carousel-footer">

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 
-import Colorbar from "../components/Colorbar/Colorbar";
-import MobileSearch from "../components/MobileSearch/MobileSearch";
-import Carousel from "../components/Carousel/Carousel";
-import Bottombar from "../components/Bottombar/Bottombar";
-import Header from "../components/Header/Header";
-import Categories from "../components/Categories/Categories";
+import Colorbar from "../../components/Colorbar/Colorbar";
+import MobileSearch from "../../components/MobileSearch/MobileSearch";
+import Carousel from "../../components/Carousel/Carousel";
+import Bottombar from "../../components/Bottombar/Bottombar";
+import Header from "../../components/Header/Header";
+import Categories from "../../components/Categories/Categories";
+import Lists from "../../components/Lists/Lists";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -24,7 +25,7 @@ function App() {
   }, [width]);
 
   return (
-    <div className="container">
+    <div>
       <Header />
 
       <Colorbar />
@@ -35,11 +36,11 @@ function App() {
 
       <Carousel topColor={width < 767 ? "white" : "#804040"} />
 
-      <div className="lists"></div>
-
-      <Bottombar />
+      <Lists />
 
       <div className="eop"></div>
+
+      <Bottombar />
     </div>
   );
 }

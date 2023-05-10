@@ -5,10 +5,10 @@ import locationSvg from "./assets/location.svg";
 import citiesdata from "./assets/Cities";
 
 const Header = () => {
-  const [cities, setcities] = useState();
+  const [cities, setCities] = useState();
 
   useEffect(() => {
-    setcities(
+    setCities(
       citiesdata.map((el, c) => {
         return (
           <option key={c} value={el}>
