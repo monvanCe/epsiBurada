@@ -6,7 +6,7 @@
 
 .searchinput {
   background-color: white;
-  background-image: url("./assets/searchicon.svg");
+  background-image: url("../../assets/mobilesearch/searchicon.svg");
   background-position: 15px 15px;
   background-repeat: no-repeat;
   padding-left: 60px;

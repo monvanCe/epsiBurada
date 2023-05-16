@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import "./Header.css";
-import locationSvg from "./assets/location.svg";
-import citiesdata from "./assets/Cities";
+import locationSvg from "../../assets/header/location.svg";
+import citiesdata from "../../assets/header/Cities";
 
 const Header = () => {
   const [cities, setCities] = useState();
@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo">
-        <img alt="logo" src={require("./assets/logo.png")} />
+        <img alt="logo" src={require("../../assets/header/logo.png")} />
       </div>
 
       <div className="desktopsearch">
@@ -39,7 +39,7 @@ const Header = () => {
       </div>
 
       <div className="favorites-container">
-        <img alt="favorites" src={require("./assets/heart.png")} />
+        <img alt="favorites" src={require("../../assets/header/heart.png")} />
         <p>1</p>
       </div>
     </div>

@@ -64,7 +64,7 @@ function App() {
   ) : (
     <div className="container">
       <img
-        src={require("./assets/logo.png")}
+        src={require("../../assets/Home/logo.png")}
         alt="resim açıklaması"
         className="blinking-image"
       />

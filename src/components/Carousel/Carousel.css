@@ -132,7 +132,7 @@ p {
 }
 
 .carousel-left-button-desktop {
-  background-image: url("./assets/carousel-button-left-desktop-image.svg");
+  background-image: url("../../assets/carousel/carousel-button-left-desktop-image.svg");
   background-repeat: no-repeat;
   background-position: 16px 6px;
   width: 55px;
@@ -145,7 +145,7 @@ p {
 }
 
 .carousel-right-button-desktop {
-  background-image: url("./assets/carousel-right-button-desktop-image.svg");
+  background-image: url("../../assets/carousel/carousel-right-button-desktop-image.svg");
   background-repeat: no-repeat;
   background-position: 18px 6px;
   width: 55px;

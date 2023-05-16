@@ -15,14 +15,20 @@ const Lists = () => {
       if (filled > 0) {
         stars.push(
           <li key={i} className="star">
-            <img alt="filled" src={require("./assets/filled-star.png")} />
+            <img
+              alt="filled"
+              src={require("../../assets/lists/filled-star.png")}
+            />
           </li>
         );
         filled--;
       } else {
         stars.push(
           <li key={i} className="star">
-            <img alt="empty" src={require("./assets/empty-star.png")} />
+            <img
+              alt="empty"
+              src={require("../../assets/lists/empty-star.png")}
+            />
           </li>
         );
       }
