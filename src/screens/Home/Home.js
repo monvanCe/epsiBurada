@@ -32,7 +32,8 @@ function App() {
     fetchProducts().then((data) => {
       setProducts(data);
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
