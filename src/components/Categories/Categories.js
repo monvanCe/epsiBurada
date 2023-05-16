@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 import "./Categories.css";
-import { fetchCategories } from "../../Datas/Network";
+import GlobalContext from "../../Datas/GlobalVariables";
 
 const Categories = () => {
-  const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    fetchCategories().then((data) => setCategories(data));
-  });
+  const { categories } = useContext(GlobalContext);
 
   return (
     <div className="categories-conteiner">
@@ -15,7 +12,7 @@ const Categories = () => {
         {categories.map((el, c) => {
           return [
             <p key={c} className="category">
-              {el ? el : "loading.."}
+              {el ? el.charAt(0).toUpperCase() + el.slice(1) : "loading.."}
             </p>,
             c + 1 === categories.length ? null : (
               <div key={c + 1000} className="hr"></div>

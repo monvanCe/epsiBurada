@@ -6,13 +6,13 @@
 
 .logo {
   width: 275px;
-  margin-right: 75px;
+  margin-right: 20px;
   display: flex;
 }
 
 .logo > img {
   object-fit: contain;
-  max-width: 200px;
+  max-width: 262px;
   max-height: 100%;
 }
 

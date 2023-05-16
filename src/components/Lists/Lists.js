@@ -1,22 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 
 import "./Lists.css";
-import { fetchCategories } from "../../Datas/Network";
-import { fetchingLists } from "../../Datas/Network";
+import GlobalContext from "../../Datas/GlobalVariables";
 
 const Lists = () => {
-  const [lists, setLists] = useState();
-  useEffect(() => {
-    fetchCategories().then((data) => {
-      fetchingLists({ data }).then((data) => {
-        setLists(data);
-      });
-    });
-  }, []);
-
-  useEffect(() => {
-    lists && console.log(lists);
-  }, [lists]);
+  const { lists } = useContext(GlobalContext);
 
   const stars = (rate) => {
     let filled = Math.floor(rate);
@@ -26,15 +14,15 @@ const Lists = () => {
     for (let i = 0; i < 5; i++) {
       if (filled > 0) {
         stars.push(
-          <li className="star">
-            <img src={require("./assets/filled-star.png")} />
+          <li key={i} className="star">
+            <img alt="filled" src={require("./assets/filled-star.png")} />
           </li>
         );
         filled--;
       } else {
         stars.push(
-          <li className="star">
-            <img src={require("./assets/empty-star.png")} />
+          <li key={i} className="star">
+            <img alt="empty" src={require("./assets/empty-star.png")} />
           </li>
         );
       }
@@ -46,34 +34,34 @@ const Lists = () => {
   return (
     <div className="lists-container">
       <div className="lists">
-        {lists ? (
-          Object.keys(lists).map((el) => (
-            <div key={el} className="list">
-              <p className="lists-header">{el}</p>
-              <div className="products">
-                {lists[el].map((element) => {
-                  return (
-                    <div className="product">
-                      <img className="product-image" src={element.image} />
-                      <p className="product-text">{element.title}</p>
-                      <div className="rates">
-                        {stars(element.rating.rate)}
-                        <p> {element.rating.count} </p>
+        {lists
+          ? Object.keys(lists).map((el, c) => (
+              <div key={c} className="list">
+                <p className="lists-header">
+                  {el.charAt(0).toUpperCase() + el.slice(1)}
+                </p>
+                <div className="products">
+                  {lists[el].map((element, index) => {
+                    return (
+                      <div key={index} className="product">
+                        <img
+                          alt="product"
+                          className="product-image"
+                          src={element.image}
+                        />
+                        <p className="product-text">{element.title}</p>
+                        <div className="rates">
+                          {stars(element.rating.rate)}
+                          <p> {element.rating.count} </p>
+                        </div>
+                        <p className="product-price"> {element.price}$</p>
                       </div>
-                      <p> {element.price} </p>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-          </div>
-        )}
+            ))
+          : null}
       </div>
     </div>
   );

@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Carousel.css";
-import { fetchProducts } from "../../Datas/Network";
+import GlobalContext from "../../Datas/GlobalVariables";
 
 const Carousel = ({ topColor }) => {
   const navigate = useNavigate();
-
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetchProducts().then((data) => setProducts(data));
-  });
+  const { products } = useContext(GlobalContext);
 
   const [list, setList] = useState([]);
   const [banner, setBanner] = useState(0);

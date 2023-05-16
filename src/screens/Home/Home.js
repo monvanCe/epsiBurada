@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Home.css";
 
 import Colorbar from "../../components/Colorbar/Colorbar";
@@ -9,22 +9,40 @@ import Header from "../../components/Header/Header";
 import Categories from "../../components/Categories/Categories";
 import Lists from "../../components/Lists/Lists";
 
+import {
+  fetchCategories,
+  fetchProducts,
+  fetchingLists,
+} from "../../api/Network";
+
+import GlobalContext from "../../Datas/GlobalVariables";
+
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-
-  const updateWidth = () => {
-    setWidth(window.innerWidth);
-  };
+  const { lists, setProducts, setCategories, setLists } =
+    useContext(GlobalContext);
 
   useEffect(() => {
-    window.addEventListener("resize", updateWidth);
+    fetchCategories().then((data) => {
+      setCategories(data);
+      fetchingLists({ data }).then((data) => {
+        setLists(data);
+      });
+    });
+    fetchProducts().then((data) => {
+      setProducts(data);
+    });
+  });
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
 
     return () => {
-      window.removeEventListener("resize", updateWidth);
+      window.removeEventListener("resize", () => setWidth(window.innerWidth));
     };
   }, [width]);
 
-  return (
+  return Object.keys(lists).length > 0 ? (
     <div>
       <Header />
 
@@ -41,6 +59,14 @@ function App() {
       <div className="eop"></div>
 
       <Bottombar />
+    </div>
+  ) : (
+    <div className="container">
+      <img
+        src={require("./assets/logo.png")}
+        alt="resim açıklaması"
+        className="blinking-image"
+      />
     </div>
   );
 }
