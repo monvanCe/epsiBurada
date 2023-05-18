@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./Carousel.css";
 import GlobalContext from "../../Datas/GlobalVariables";
+import { handleStart, handleEnd } from "../../utils/handleMouseEvents";
 
 const Carousel = ({ topColor }) => {
   const navigate = useNavigate();
@@ -19,29 +20,11 @@ const Carousel = ({ topColor }) => {
     }, 50);
   }, [banner]);
 
-  let startX = 0;
-
-  function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
-  }
-
-  function handleTouchEnd(event) {
-    const diff = startX - event.changedTouches[0].clientX;
-
-    if (diff > 50) {
-      banner < 9 && setBanner(banner + 1);
-    }
-
-    if (diff < -50) {
-      banner > 0 && setBanner(banner - 1);
-    }
-  }
-
   const updateList = () => {
     setList(
       products.slice(0, 10).map((el, c) => {
         return (
-          <li key={c}>
+          <li key={c} onClick={() => setBanner(c)}>
             <img
               alt="carousel-footer"
               className={`${
@@ -50,7 +33,6 @@ const Carousel = ({ topColor }) => {
                   : "footer-image"
               }`}
               src={`${el.image}`}
-              onClick={() => setBanner(c)}
             />
           </li>
         );
@@ -66,8 +48,18 @@ const Carousel = ({ topColor }) => {
     <div
       className={"carousel-container"}
       style={{ backgroundColor: topColor }}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      onTouchStart={handleStart}
+      onTouchEnd={(event) => {
+        let diff = handleEnd(event);
+        diff > 50 && banner < 9 && setBanner(banner + 1);
+        diff < -50 && banner > 0 && setBanner(banner - 1);
+      }}
+      onMouseDown={handleStart}
+      onMouseUp={(event) => {
+        let diff = handleEnd(event);
+        diff > 50 && banner < 9 && setBanner(banner + 1);
+        diff < -50 && banner > 0 && setBanner(banner - 1);
+      }}
     >
       <div className="carousel-body">
         <div className="carousel-content-text">

@@ -8,6 +8,7 @@ import Bottombar from "../../components/Bottombar/Bottombar";
 import Header from "../../components/Header/Header";
 import Categories from "../../components/Categories/Categories";
 import Lists from "../../components/Lists/Lists";
+import Eop from "../../components/Eop/Eop";
 
 import {
   fetchCategories,
@@ -57,7 +58,7 @@ function App() {
 
       <Lists />
 
-      <div className="eop"></div>
+      <Eop />
 
       <Bottombar />
     </div>
