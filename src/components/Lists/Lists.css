@@ -3,6 +3,16 @@ p {
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.fixed {
+  position: fixed;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  top: 5px;
+  right: 5px;
+  background-color: black;
+}
+
 .lists {
   max-width: 1088px;
   margin: auto;
@@ -45,19 +55,6 @@ p {
   margin-left: 5px;
   padding: 5px;
   flex-shrink: 0;
-}
-
-.add-product-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.add-product-text {
-  font-size: 72px;
-  color: #d8d8d8;
-  font-weight: bold;
 }
 
 .product-image {

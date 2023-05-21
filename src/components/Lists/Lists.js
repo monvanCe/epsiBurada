@@ -1,10 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import "./Lists.css";
 import GlobalContext from "../../Datas/GlobalVariables";
 
+import { ProductForm, AddContainer } from "./components/AddProduct";
+
 const Lists = () => {
-  const { lists, setLists } = useContext(GlobalContext);
+  const { lists, categories } = useContext(GlobalContext);
+
+  const [isInput, setIsInput] = useState(() => {
+    return categories.reduce((acc, category) => {
+      return { ...acc, [category]: false };
+    }, {});
+  });
+
+  const toggleValue = (key) => {
+    setIsInput((prevState) => {
+      if (prevState.hasOwnProperty(key)) {
+        return {
+          ...prevState,
+          [key]: !prevState[key],
+        };
+      }
+      return prevState;
+    });
+  };
 
   const stars = (rate) => {
     let filled = Math.round(rate);
@@ -35,27 +55,8 @@ const Lists = () => {
     return <ul className="stars"> {stars ? stars : ""} </ul>;
   };
 
-  const addproduct = () => {
-    setLists((prevState) => {
-      return {
-        ...prevState,
-        jewelery: [
-          ...prevState.jewelery,
-          {
-            image:
-              "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
-            id: 21,
-            title: "Pierced Owl Rose Gold Plated Stainless Steel Double",
-            rating: { rate: 1, count: 100 },
-            price: 10.99,
-          },
-        ],
-      };
-    });
-  };
-
   const processProduct = (product) => {
-    return product ? (
+    return product.id ? (
       <div key={product.id} className="product">
         <img alt="product" className="product-image" src={product.image} />
         <p className="product-text">{product.title}</p>
@@ -65,22 +66,23 @@ const Lists = () => {
         </div>
         <p className="product-price"> {product.price}$</p>
       </div>
+    ) : isInput[product] ? (
+      <ProductForm category={product} toggleValue={toggleValue} />
     ) : (
-      <div onClick={addproduct} className="product add-product-container">
-        <p className="add-product-text">+</p>
-      </div>
+      <AddContainer toggleValue={toggleValue} category={product} />
     );
   };
 
   const processList = (list, index) => {
     const processedProducts = list.map((product) => processProduct(product));
+
     return (
       <div key={index} className="list">
         <p className="lists-header">
           {list[0].category.charAt(0).toUpperCase() + list[0].category.slice(1)}
         </p>
         <div className="products">
-          {processedProducts} {processProduct()}
+          {processedProducts} {processProduct(list[0].category)}
         </div>
       </div>
     );

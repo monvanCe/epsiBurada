@@ -57,7 +57,7 @@ const Carousel = ({ topColor }) => {
       onMouseDown={handleStart}
       onMouseUp={(event) => {
         let diff = handleEnd(event);
-        diff > 50 && banner < 9 && setBanner(banner + 1);
+        diff > 50 && setBanner(banner + 1);
         diff < -50 && banner > 0 && setBanner(banner - 1);
       }}
     >
