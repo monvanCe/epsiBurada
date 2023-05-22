@@ -12,7 +12,7 @@ export const fetchCategories = async () => {
   return response.data;
 };
 
-export const fetchingLists = async ({ data }) => {
+export const fetchLists = async ({ data }) => {
   let lists = {};
 
   let i = 0;

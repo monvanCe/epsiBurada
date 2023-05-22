@@ -10,31 +10,11 @@ import Categories from "../../components/Categories/Categories";
 import Lists from "../../components/Lists/Lists";
 import Eop from "../../components/Eop/Eop";
 
-import {
-  fetchCategories,
-  fetchProducts,
-  fetchingLists,
-} from "../../api/Network";
-
 import GlobalContext from "../../Datas/GlobalVariables";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const { lists, setProducts, setCategories, setLists } =
-    useContext(GlobalContext);
-
-  useEffect(() => {
-    fetchCategories().then((data) => {
-      setCategories(data);
-      fetchingLists({ data }).then((data) => {
-        setLists(data);
-      });
-    });
-    fetchProducts().then((data) => {
-      setProducts(data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { lists } = useContext(GlobalContext);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -54,7 +34,7 @@ function App() {
 
       <Categories />
 
-      <Carousel topColor={width < 767 ? "white" : "#804040"} />
+      <Carousel topColor={width < 767 ? "rgba(0, 0, 0, 0.0)" : "#804040"} />
 
       <Lists />
 

@@ -1,5 +1,12 @@
-.Eop {
+.eop-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.eop {
   object-fit: contain;
   width: 100%;
-  justify-self: center;
+  max-width: 1088px;
+  margin: auto;
 }

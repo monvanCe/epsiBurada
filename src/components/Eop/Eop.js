@@ -3,7 +3,13 @@ import "./Eop.css";
 
 const Eop = () => {
   return (
-    <img className="Eop" alt="eop" src={require("../../assets/Eop/Eop.png")} />
+    <div className="eop-container">
+      <img
+        className="eop"
+        alt="eop"
+        src={require("../../assets/Eop/Eop.png")}
+      />
+    </div>
   );
 };
 

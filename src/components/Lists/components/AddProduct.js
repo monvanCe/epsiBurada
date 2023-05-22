@@ -32,11 +32,12 @@ export const ProductForm = (props) => {
     props.toggleValue(props.category);
 
     const newProduct = {
-      image,
+      category: props.category,
       id: products.length + 1,
-      title,
-      rating: { rate: rating, count: ratingCount },
+      image,
       price,
+      rating: { rate: rating, count: ratingCount },
+      title,
     };
 
     setLists((prevState) => ({
@@ -93,9 +94,17 @@ export const ProductForm = (props) => {
           onChange={(e) => setPrice(e.target.value)}
           className="add-product-price"
         />
-        <button type="submit" className="add-product-button">
-          Ekle
-        </button>
+        <div className="add-product-button-container">
+          <button
+            onClick={() => props.toggleValue(props.category)}
+            className="add-product-button"
+          >
+            İptal
+          </button>
+          <button type="submit" className="add-product-button">
+            Ekle
+          </button>
+        </div>
       </form>
     </div>
   );
