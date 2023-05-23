@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 
 import "./Lists.css";
 import GlobalContext from "../../Datas/GlobalVariables";
-
 import { ProductForm, AddContainer } from "./components/AddProduct";
+import { removeObjectById } from "../../utils/removeById";
 
 const Lists = () => {
-  const { lists, categories } = useContext(GlobalContext);
+  const { lists, categories, products } = useContext(GlobalContext);
 
   const [isInput, setIsInput] = useState(() => {
     return categories.reduce((acc, category) => {
@@ -16,13 +16,10 @@ const Lists = () => {
 
   const toggleValue = (key) => {
     setIsInput((prevState) => {
-      if (prevState.hasOwnProperty(key)) {
-        return {
-          ...prevState,
-          [key]: !prevState[key],
-        };
-      }
-      return prevState;
+      return {
+        ...prevState,
+        [key]: !prevState[key],
+      };
     });
   };
 
@@ -64,7 +61,15 @@ const Lists = () => {
           {stars(product.rating.rate)}
           <p> {product.rating.count} </p>
         </div>
-        <p className="product-price"> {product.price}$</p>
+        <div className="product-bottom-div">
+          <p className="product-price"> {product.price}$</p>
+          <p
+            onClick={() => removeObjectById(products, product.id)}
+            className="product-remove-button"
+          >
+            KALDIR
+          </p>
+        </div>
       </div>
     ) : isInput[product] ? (
       <ProductForm category={product} toggleValue={toggleValue} />
