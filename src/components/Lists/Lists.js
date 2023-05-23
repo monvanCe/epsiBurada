@@ -5,11 +5,14 @@ import GlobalContext from "../../Datas/GlobalVariables";
 import { ProductForm, AddContainer } from "./components/AddProduct";
 import { removeObjectById } from "../../utils/removeById";
 
+import proToCat from "../../utils/ProToCat";
+import catToLis from "../../utils/CatToLis";
+
 const Lists = () => {
-  const { lists, categories, products } = useContext(GlobalContext);
+  const { products, setProducts } = useContext(GlobalContext);
 
   const [isInput, setIsInput] = useState(() => {
-    return categories.reduce((acc, category) => {
+    return proToCat(products).reduce((acc, category) => {
       return { ...acc, [category]: false };
     }, {});
   });
@@ -64,7 +67,7 @@ const Lists = () => {
         <div className="product-bottom-div">
           <p className="product-price"> {product.price}$</p>
           <p
-            onClick={() => removeObjectById(products, product.id)}
+            onClick={() => setProducts(removeObjectById(products, product.id))}
             className="product-remove-button"
           >
             KALDIR
@@ -93,7 +96,7 @@ const Lists = () => {
     );
   };
 
-  const processedLists = Object.values(lists).map(processList);
+  const processedLists = Object.values(catToLis(products)).map(processList);
 
   return <div className="lists">{processedLists}</div>;
 };

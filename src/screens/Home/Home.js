@@ -14,7 +14,7 @@ import GlobalContext from "../../Datas/GlobalVariables";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const { lists } = useContext(GlobalContext);
+  const { products } = useContext(GlobalContext);
 
   useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -24,7 +24,7 @@ function App() {
     };
   }, [width]);
 
-  return Object.keys(lists).length > 0 ? (
+  return products.length > 0 ? (
     <div>
       <Header />
 

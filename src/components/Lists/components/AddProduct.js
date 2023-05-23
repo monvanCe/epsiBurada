@@ -4,7 +4,7 @@ import "./AddProduct.css";
 import GlobalContext from "../../../Datas/GlobalVariables";
 
 export const ProductForm = (props) => {
-  const { setLists, products, setProducts } = useContext(GlobalContext);
+  const { products, setProducts } = useContext(GlobalContext);
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState("");
@@ -39,11 +39,6 @@ export const ProductForm = (props) => {
       rating: { rate: rating, count: ratingCount },
       title,
     };
-
-    setLists((prevState) => ({
-      ...prevState,
-      [props.category]: [...prevState[props.category], newProduct],
-    }));
 
     setProducts([...products, newProduct]);
 
