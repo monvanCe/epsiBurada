@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-import { fetchProducts } from "../api/Network";
+import { fetchProducts } from "../services/Network";
 
 const GlobalContext = createContext({
   products: [],
@@ -10,7 +10,7 @@ const GlobalContext = createContext({
 export const GlobalProvider = ({ children }) => {
   const [products, setProducts] = useState(() => {
     const storedProducts = localStorage.getItem("products");
-    return storedProducts > 0
+    return JSON.parse(storedProducts).length > 0
       ? JSON.parse(storedProducts)
       : fetchProducts().then((data) => {
           setProducts(data);
@@ -19,6 +19,7 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
+    console.log(JSON.parse(localStorage.getItem("products")));
   }, [products]);
 
   const value = {

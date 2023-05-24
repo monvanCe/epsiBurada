@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 
 import "./AddProduct.css";
-import GlobalContext from "../../../Datas/GlobalVariables";
+import GlobalContext from "../../../state/GlobalVariables";
 
 export const ProductForm = (props) => {
   const { products, setProducts } = useContext(GlobalContext);

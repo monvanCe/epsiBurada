@@ -1,5 +1,5 @@
 export const removeObjectById = (array, id) => {
-  const newArray = [...array]; // Create a copy of the input array
+  const newArray = [...array];
 
   const index = newArray.findIndex((obj) => obj.id === id);
 

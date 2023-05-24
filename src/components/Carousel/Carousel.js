@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Carousel.css";
-import GlobalContext from "../../Datas/GlobalVariables";
+import GlobalContext from "../../state/GlobalVariables";
 import { handleStart, handleEnd } from "../../utils/handleMouseEvents";
 
 const Carousel = ({ topColor }) => {

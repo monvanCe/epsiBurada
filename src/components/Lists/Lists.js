@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 
 import "./Lists.css";
-import GlobalContext from "../../Datas/GlobalVariables";
+import GlobalContext from "../../state/GlobalVariables";
 import { ProductForm, AddContainer } from "./components/AddProduct";
-import { removeObjectById } from "../../utils/removeById";
+import { removeObjectById } from "../../utils/removeOById";
 
 import proToCat from "../../utils/ProToCat";
 import catToLis from "../../utils/CatToLis";

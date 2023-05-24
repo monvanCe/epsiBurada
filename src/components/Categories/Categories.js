@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import "./Categories.css";
-import GlobalContext from "../../Datas/GlobalVariables";
+import GlobalContext from "../../state/GlobalVariables";
 
 import proToCat from "../../utils/ProToCat";
 

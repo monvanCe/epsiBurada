@@ -10,7 +10,7 @@ import Categories from "../../components/Categories/Categories";
 import Lists from "../../components/Lists/Lists";
 import Eop from "../../components/Eop/Eop";
 
-import GlobalContext from "../../Datas/GlobalVariables";
+import GlobalContext from "../../state/GlobalVariables";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
