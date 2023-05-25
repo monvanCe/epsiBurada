@@ -78,9 +78,7 @@ const Carousel = ({ topColor }) => {
           <button
             className="carousel-content-button"
             onClick={() => {
-              navigate(
-                `Product?productName=${products[banner].title}&productCategory=${products[banner].category}`
-              );
+              navigate(`Product?productId=${products[banner].id}`);
             }}
           >
             <p className="carousel-content-button-text">Sipariş Et</p>

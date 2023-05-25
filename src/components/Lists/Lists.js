@@ -9,8 +9,10 @@ import proToCat from "../../utils/ProToCat";
 import catToLis from "../../utils/CatToLis";
 import { handleFavoriteToggle } from "../../utils/handleFavoriteToggle";
 import { stars } from "../../utils/ratingStarts";
+import { useNavigate } from "react-router-dom";
 
 const Lists = () => {
+  const navigate = useNavigate();
   const { products, setProducts } = useContext(GlobalContext);
 
   const [isInput, setIsInput] = useState(() => {
@@ -45,7 +47,14 @@ const Lists = () => {
           />
         </div>
         <img alt="product" className="product-image" src={product.image} />
-        <p className="product-text">{product.title}</p>
+        <p
+          className="product-text"
+          onClick={() => {
+            navigate(`Product?productId=${product.id}`);
+          }}
+        >
+          {product.title}
+        </p>
         <div className="rates">
           {stars(product.rating.rate)}
           <p> {product.rating.count} </p>

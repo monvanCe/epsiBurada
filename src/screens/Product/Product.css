@@ -1,0 +1,49 @@
+p {
+  font-family: -apple-system, BlinkMacSystemFont, Arial, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.products-product-container {
+  max-width: 1088px;
+  margin: auto;
+  display: flex;
+  margin-top: 20px;
+}
+
+.products-product-image {
+  border: 1px solid #d8d8d8;
+  border-radius: 8px 0 0 8px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-product-image img {
+  object-fit: contain;
+  width: 75%;
+  height: 75%;
+}
+
+.products-product-content {
+  padding: 10px;
+  background-color: #d8d8d8;
+  border-radius: 0 8px 8px 0;
+  flex: 1;
+}
+
+.products-product-title {
+  color: #484848;
+  line-height: 1.2;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.products-product-price-rating {
+  display: flex;
+  justify-content: space-between;
+}
+
+.products-product-rating-count {
+  justify-self: flex-end;
+}
