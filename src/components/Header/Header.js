@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import "./Header.css";
 import locationSvg from "../../assets/header/location.svg";
 import citiesdata from "../../assets/header/Cities";
 
+import GlobalContext from "../../state/GlobalVariables";
+
 const Header = () => {
   const [cities, setCities] = useState();
+  const { products } = useContext(GlobalContext);
 
   useEffect(() => {
     setCities(
@@ -40,7 +43,7 @@ const Header = () => {
 
       <div className="favorites-container">
         <img alt="favorites" src={require("../../assets/header/heart.png")} />
-        <p>1</p>
+        <p>{products.filter((obj) => obj.favorite).length}</p>
       </div>
     </div>
   );

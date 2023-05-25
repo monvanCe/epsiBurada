@@ -3,6 +3,8 @@ import React, { useState, useContext } from "react";
 import "./AddProduct.css";
 import GlobalContext from "../../../state/GlobalVariables";
 
+import { getHighestId } from "../../../utils/getHighestId";
+
 export const ProductForm = (props) => {
   const { products, setProducts } = useContext(GlobalContext);
   const [image, setImage] = useState("");
@@ -33,7 +35,7 @@ export const ProductForm = (props) => {
 
     const newProduct = {
       category: props.category,
-      id: products.length + 1,
+      id: getHighestId(products) + 1,
       image,
       price,
       rating: { rate: rating, count: ratingCount },

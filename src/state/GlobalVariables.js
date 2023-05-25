@@ -5,6 +5,8 @@ import { fetchProducts } from "../services/Network";
 const GlobalContext = createContext({
   products: [],
   setProducts: () => {},
+  favorites: [],
+  setFavorites: () => {},
 });
 
 export const GlobalProvider = ({ children }) => {
@@ -19,12 +21,23 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
-    console.log(JSON.parse(localStorage.getItem("products")));
+    console.log(products);
   }, [products]);
+
+  const [favorites, setFavorites] = useState(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    return JSON.parse(storedFavorites) ? JSON.parse(storedFavorites) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const value = {
     products,
     setProducts,
+    favorites,
+    setFavorites,
   };
 
   return (

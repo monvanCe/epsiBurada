@@ -3,10 +3,12 @@ import React, { useContext, useState } from "react";
 import "./Lists.css";
 import GlobalContext from "../../state/GlobalVariables";
 import { ProductForm, AddContainer } from "./components/AddProduct";
-import { removeObjectById } from "../../utils/removeOById";
 
+import { removeObjectById } from "../../utils/removeOById";
 import proToCat from "../../utils/ProToCat";
 import catToLis from "../../utils/CatToLis";
+import { handleFavoriteToggle } from "../../utils/handleFavoriteToggle";
+import { stars } from "../../utils/ratingStarts";
 
 const Lists = () => {
   const { products, setProducts } = useContext(GlobalContext);
@@ -26,38 +28,22 @@ const Lists = () => {
     });
   };
 
-  const stars = (rate) => {
-    let filled = Math.round(rate);
-    let stars = [];
-
-    for (let i = 0; i < 5; i++) {
-      if (filled > 0) {
-        stars.push(
-          <li key={i} className="star">
-            <img
-              alt="filled"
-              src={require("../../assets/lists/filled-star.png")}
-            />
-          </li>
-        );
-        filled--;
-      } else {
-        stars.push(
-          <li key={i} className="star">
-            <img
-              alt="empty"
-              src={require("../../assets/lists/empty-star.png")}
-            />
-          </li>
-        );
-      }
-    }
-    return <ul className="stars"> {stars ? stars : ""} </ul>;
-  };
-
   const processProduct = (product) => {
     return product.id ? (
       <div key={product.id} className="product">
+        <div
+          className="product-favorite"
+          onClick={() => handleFavoriteToggle(setProducts, product.id)}
+        >
+          <img
+            src={
+              product.favorite
+                ? require("../../assets/lists/favorite.png")
+                : require("../../assets/lists/unfavorite.png")
+            }
+            alt="favorite"
+          />
+        </div>
         <img alt="product" className="product-image" src={product.image} />
         <p className="product-text">{product.title}</p>
         <div className="rates">

@@ -22,15 +22,6 @@
   box-shadow: 0px 1px 2px #0000001f;
 }
 
-.mobilesearch:focus-within {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
-}
-
 @media (max-width: 767px) {
   .mobilesearch {
     display: flex;
